@@ -3,6 +3,11 @@ import server from "http";
 import {Server} from "socket.io";
 
 const app = express();
+
+app.get('/', (req, res) => {
+  res.send('<h1>Api v1</h1>')
+})
+
 const serverHttp = server.createServer(app);
 const io = new Server(serverHttp, {
   cors: {origin: "http://localhost:5173"}
