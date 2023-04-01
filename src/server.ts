@@ -1,6 +1,6 @@
 import express from "express";
 import server from "http";
-import {Server} from "socket.io";
+import { Server } from "socket.io";
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
 
 const serverHttp = server.createServer(app);
 const io = new Server(serverHttp, {
-  cors: {origin: "http://localhost:5173"}
+  cors: { origin: "https://chat-front-omega.vercel.app" }
 });
 
 io.on('connection', socket => {
@@ -21,7 +21,7 @@ io.on('connection', socket => {
   })
 
   socket.on('set_username', username => {
-    socket.data.username = username;  
+    socket.data.username = username;
   })
 
   socket.on('message', text => {
