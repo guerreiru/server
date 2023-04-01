@@ -1,8 +1,10 @@
 import express from "express";
 import server from "http";
+import cors from "cors";
 import { Server } from "socket.io";
 
 const app = express();
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('<h1>Api v1</h1>')
