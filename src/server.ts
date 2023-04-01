@@ -1,10 +1,8 @@
 import express from "express";
 import server from "http";
-import cors from "cors";
 import { Server } from "socket.io";
 
 const app = express();
-app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('<h1>Api v1</h1>')
@@ -12,7 +10,7 @@ app.get('/', (req, res) => {
 
 const serverHttp = server.createServer(app);
 const io = new Server(serverHttp, {
-  cors: { origin: "https://chat-front-omega.vercel.app" }
+  cors: { origin: "http://localhost:3000" }
 });
 
 io.on('connection', socket => {
